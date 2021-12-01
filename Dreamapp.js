@@ -2,14 +2,14 @@
 
 const darkButton = document.getElementById('dark');
 const lightButton = document.getElementById('light');
-const solarButton = document.getElementById('dream');
+const solarButton = document.getElementById('solar');
 const body = document.body;
 
 
 // Apply the cached theme on reload
 
 const theme = localStorage.getItem('theme');
-const isSolar = localStorage.getItem('dreamtv');
+const isSolar = localStorage.getItem('isSolar');
 
 if (theme) {
   body.classList.add(theme);
@@ -31,16 +31,16 @@ lightButton.onclick = () => {
 
 solarButton.onclick = () => {
 
-  if (body.classList.contains('dream')) {
+  if (body.classList.contains('solar')) {
     
-    body.classList.remove('dream');
+    body.classList.remove('solar');
     solarButton.style.cssText = `
       --bg-solar: var(--yellow);
     `
 
-    solarButton.innerText = 'dream';
+    solarButton.innerText = 'solarize';
 
-    localStorage.removeItem('dreamtv');
+    localStorage.removeItem('isSolar');
 
   } else {
 
@@ -48,9 +48,9 @@ solarButton.onclick = () => {
       --bg-solar: white;
     `
 
-    body.classList.add('dream');
+    body.classList.add('solar');
     solarButton.innerText = 'normalize';
 
-    localStorage.setItem('dreamtv', true);
+    localStorage.setItem('isSolar', true);
   }
 };
